@@ -3,11 +3,11 @@ parameters:
   objectId: 'c9266965-c83e-4f3c-82e0-235c97f3fb36'
 
 jobs:
-- job: DeployVnet
-  displayName: "Deploy Vnet"
+- job: DeployKeyvault
+  displayName: "Deploy Key Vault"
   steps:
   - task: AzureResourceGroupDeployment@2
-    displayName: "Deploy Vnet"
+    displayName: "Deploy Key Vault"
     inputs:
       azureSubscription: 'SC-GARAGE'
       action: 'Create Or Update Resource Group'
