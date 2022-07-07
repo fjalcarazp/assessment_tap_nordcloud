@@ -9,10 +9,14 @@ jobs:
   - task: AzureResourceGroupDeployment@2
     displayName: "Deploy Vnet"
     inputs:
-      azureSubscription: AZG-Launchpad-advanced-03
-      resourceGroupName: rg-team-1-may-case-we
-      location: westeurope
-      csmFile: $(Build.SourcesDirectory)/nestedTemplates/1-keyVault/templates/keyvault-azuredeploy.json
-      csmParametersFile: $(Build.SourcesDirectory)/nestedTemplates/1-keyVault/templates/keyvault-azuredeploy.parameters.json
-      overrideParameters:  '-keyVaultName ${{ parameters.keyVaultName }}
-                            -objectId ${{ parameters.objectId }}'
+      azureSubscription: 'SC-GARAGE'
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: 'rg-team-1-may-case-we'
+      location: 'westeurope'
+      templateLocation: 'Linked artifact'
+      csmFile: '$(Build.SourcesDirectory)/nestedTemplates/1-keyVault/templates/keyvault-azuredeploy.json'
+      csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/1-keyVault/templates/keyvault-azuredeploy.parameters.json'
+      overrideParameters: |
+        -keyVaultName ${{ parameters.keyVaultName }} 
+        -objectId ${{ parameters.objectId }}
+      deploymentMode: 'Incremental'
