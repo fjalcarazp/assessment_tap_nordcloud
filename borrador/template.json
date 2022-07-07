@@ -1,0 +1,373 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "type": "String"
+        },
+        "name": {
+            "type": "String"
+        },
+        "location": {
+            "type": "String"
+        },
+        "hostingPlanName": {
+            "type": "String"
+        },
+        "serverFarmResourceGroup": {
+            "type": "String"
+        },
+        "sku": {
+            "type": "String"
+        },
+        "skuCode": {
+            "type": "String"
+        },
+        "workerSize": {
+            "type": "String"
+        },
+        "workerSizeId": {
+            "type": "String"
+        },
+        "numberOfWorkers": {
+            "type": "String"
+        },
+        "kind": {
+            "type": "String"
+        },
+        "reserved": {
+            "type": "Bool"
+        },
+        "alwaysOn": {
+            "type": "Bool"
+        },
+        "linuxFxVersion": {
+            "type": "String"
+        },
+        "dockerRegistryUrl": {
+            "type": "String"
+        },
+        "storageSizeGB": {
+            "type": "Int"
+        },
+        "storageIops": {
+            "type": "Int"
+        },
+        "storageAutoGrow": {
+            "type": "String"
+        },
+        "backupRetentionDays": {
+            "type": "Int"
+        },
+        "geoRedundantBackup": {
+            "type": "String"
+        },
+        "charset": {
+            "type": "String"
+        },
+        "collation": {
+            "type": "String"
+        },
+        "vmName": {
+            "type": "String"
+        },
+        "serverEdition": {
+            "type": "String"
+        },
+        "vCores": {
+            "type": "Int"
+        },
+        "serverName": {
+            "type": "String"
+        },
+        "serverUsername": {
+            "type": "String"
+        },
+        "serverPassword": {
+            "type": "SecureString"
+        },
+        "databaseName": {
+            "type": "String"
+        },
+        "publicNetworkAccess": {
+            "type": "String"
+        },
+        "wordpressTitle": {
+            "type": "String"
+        },
+        "wordpressAdminEmail": {
+            "type": "String"
+        },
+        "wordpressUsername": {
+            "type": "String"
+        },
+        "wordpressPassword": {
+            "type": "SecureString"
+        },
+        "wpLocaleCode": {
+            "type": "String"
+        },
+        "vnetName": {
+            "type": "String"
+        },
+        "subnetForApp": {
+            "type": "String"
+        },
+        "subnetForDb": {
+            "type": "String"
+        },
+        "privateDnsZoneNameForDb": {
+            "type": "String"
+        }
+    },
+    "variables": {
+        "appServicesApiVersion": "2021-03-01",
+        "databaseApiVersion": "2021-05-01",
+        "databaseVersion": "5.7",
+        "vnetDeploymentApiVersion": "2020-07-01",
+        "privateDnsApiVersion": "2018-09-01",
+        "privateEndpointApiVersion": "2021-03-01",
+        "vnetAddress": "10.0.0.0/16",
+        "subnetAddressForApp": "10.0.0.0/24",
+        "subnetAddressForDb": "10.0.1.0/24"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "[variables('appServicesApiVersion')]",
+            "name": "[parameters('name')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+                "[concat('Microsoft.DBforMySQL/flexibleServers/', parameters('serverName'))]",
+                "[concat('Microsoft.DBforMySQL/flexibleServers/', parameters('serverName'), '/databases/', parameters('databaseName'))]"
+            ],
+            "properties": {
+                "name": "[parameters('name')]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "DOCKER_REGISTRY_SERVER_URL",
+                            "value": "[parameters('dockerRegistryUrl')]"
+                        },
+                        {
+                            "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+                            "value": "true"
+                        },
+                        {
+                            "name": "DATABASE_HOST",
+                            "value": "[concat(parameters('serverName'),'.mysql.database.azure.com')]"
+                        },
+                        {
+                            "name": "DATABASE_NAME",
+                            "value": "[parameters('databaseName')]"
+                        },
+                        {
+                            "name": "DATABASE_USERNAME",
+                            "value": "[parameters('serverUsername')]"
+                        },
+                        {
+                            "name": "DATABASE_PASSWORD",
+                            "value": "[parameters('serverPassword')]"
+                        },
+                        {
+                            "name": "WORDPRESS_ADMIN_EMAIL",
+                            "value": "[parameters('wordpressAdminEmail')]"
+                        },
+                        {
+                            "name": "WORDPRESS_ADMIN_USER",
+                            "value": "[parameters('wordpressUsername')]"
+                        },
+                        {
+                            "name": "WORDPRESS_ADMIN_PASSWORD",
+                            "value": "[parameters('wordpressPassword')]"
+                        },
+                        {
+                            "name": "WORDPRESS_TITLE",
+                            "value": "[parameters('wordpressTitle')]"
+                        },
+                        {
+                            "name": "WEBSITES_CONTAINER_START_TIME_LIMIT",
+                            "value": "900"
+                        },
+                        {
+                            "name": "WORDPRESS_LOCALE_CODE",
+                            "value": "[parameters('wpLocaleCode')]"
+                        },
+                        {
+                            "name": "SETUP_PHPMYADMIN",
+                            "value": "true"
+                        }
+                    ],
+                    "connectionStrings": [],
+                    "linuxFxVersion": "[parameters('linuxFxVersion')]",
+                    "vnetRouteAllEnabled": true
+                },
+                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+                "clientAffinityEnabled": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "[variables('appServicesApiVersion')]",
+            "name": "[parameters('hostingPlanName')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/flexibleServers', parameters('serverName'))]"
+            ],
+            "sku": {
+                "Tier": "[parameters('sku')]",
+                "Name": "[parameters('skuCode')]"
+            },
+            "kind": "[parameters('kind')]",
+            "properties": {
+                "name": "[parameters('hostingPlanName')]",
+                "workerSize": "[parameters('workerSize')]",
+                "workerSizeId": "[parameters('workerSizeId')]",
+                "numberOfWorkers": "[parameters('numberOfWorkers')]",
+                "reserved": "[parameters('reserved')]"
+            }
+        },
+        {
+            "type": "Microsoft.DBforMySQL/flexibleServers/",
+            "apiVersion": "[variables('databaseApiVersion')]",
+            "name": "[parameters('serverName')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/privateDnsZones/virtualNetworkLinks', parameters('privateDnsZoneNameForDb'), format('{0}-vnetlink', parameters('privateDnsZoneNameForDb')))]"
+            ],
+            "tags": {
+                "AppProfile": "Wordpress"
+            },
+            "sku": {
+                "name": "[parameters('vmName')]",
+                "tier": "[parameters('serverEdition')]",
+                "capacity": "[parameters('vCores')]"
+            },
+            "properties": {
+                "version": "[variables('databaseVersion')]",
+                "administratorLogin": "[parameters('serverUsername')]",
+                "administratorLoginPassword": "[parameters('serverPassword')]",
+                "publicNetworkAccess": "[parameters('publicNetworkAccess')]",
+                "Storage": {
+                    "StorageSizeGB": "[parameters('storageSizeGB')]",
+                    "Iops": "[parameters('storageIops')]",
+                    "Autogrow": "[parameters('storageAutoGrow')]"
+                },
+                "Backup": {
+                    "backupRetentionDays": "[parameters('backupRetentionDays')]",
+                    "geoRedundantBackup": "[parameters('geoRedundantBackup')]"
+                },
+                "Network": {
+                    "PrivateDnsZoneResourceId": "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateDnsZoneNameForDb'))]",
+                    "DelegatedSubnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnetForDb'))]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.DBforMySQL/flexibleServers/databases",
+            "apiVersion": "[variables('databaseApiVersion')]",
+            "name": "[format('{0}/{1}', parameters('serverName'), parameters('databaseName') )]",
+            "dependsOn": [
+                "[resourceId('Microsoft.DBforMySQL/flexibleServers', parameters('serverName'))]"
+            ],
+            "properties": {
+                "charset": "[parameters('charset')]",
+                "collation": "[parameters('collation')]"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "[variables('vnetDeploymentApiVersion')]",
+            "name": "[parameters('vnetName')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [],
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[variables('vnetAddress')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[parameters('subnetForApp')]",
+                        "properties": {
+                            "addressPrefix": "[variables('subnetAddressForApp')]",
+                            "delegations": [
+                                {
+                                    "name": "dlg-appService",
+                                    "properties": {
+                                        "serviceName": "Microsoft.Web/serverFarms"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "[parameters('subnetForDb')]",
+                        "properties": {
+                            "addressPrefix": "[variables('subnetAddressForDb')]",
+                            "delegations": [
+                                {
+                                    "name": "dlg-database",
+                                    "properties": {
+                                        "serviceName": "Microsoft.DBforMySQL/flexibleServers"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones",
+            "apiVersion": "[variables('privateDnsApiVersion')]",
+            "name": "[parameters('privateDnsZoneNameForDb')]",
+            "location": "global",
+            "dependsOn": [],
+            "resources": [
+                {
+                    "type": "virtualNetworkLinks",
+                    "apiVersion": "[variables('privateDnsApiVersion')]",
+                    "name": "[format('{0}-vnetlink', parameters('privateDnsZoneNameForDb'))]",
+                    "location": "global",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateDnsZoneNameForDb'))]",
+                        "[resourceId('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]"
+                    ],
+                    "properties": {
+                        "virtualNetwork": {
+                            "id": "[resourceId('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]"
+                        },
+                        "registrationEnabled": true
+                    }
+                }
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/networkConfig",
+            "apiVersion": "[variables('appServicesApiVersion')]",
+            "name": "[format('{0}/{1}', parameters('name'), 'virtualNetwork')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/Sites', parameters('name'))]",
+                "[resourceId('Microsoft.Network/privateDnsZones/virtualNetworkLinks', parameters('privateDnsZoneNameForDb'), format('{0}-vnetlink', parameters('privateDnsZoneNameForDb')))]"
+            ],
+            "properties": {
+                "subnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnetForApp'))]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/config",
+            "apiVersion": "[variables('appServicesApiVersion')]",
+            "name": "[concat(parameters('name'), '/web')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/Sites', parameters('name'))]",
+                "[resourceId('Microsoft.Web/sites/networkConfig', parameters('name'), 'virtualNetwork')]"
+            ],
+            "properties": {
+                "alwaysOn": "[parameters('alwaysOn')]"
+            }
+        }
+    ]
+}

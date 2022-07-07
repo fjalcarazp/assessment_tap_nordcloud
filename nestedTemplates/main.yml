@@ -1,0 +1,22 @@
+resources:
+  - repo: self
+  
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-18.04'
+
+stages:
+- stage: stage1
+  jobs:
+  # - template: ./nested/build/job.yml
+  #   parameters:
+  #     vnetName: 'Vnet01'
+  #     vnetAddressSpace: '10.0.0.0/24'
+
+  # - template: ./nested/build/job.yml
+  #   parameters:
+  #     vnetName: 'Vnet02'
+  #     vnetAddressSpace: '10.1.0.0/24'
+
+  - template: ./1-keyVault/build/job.yml

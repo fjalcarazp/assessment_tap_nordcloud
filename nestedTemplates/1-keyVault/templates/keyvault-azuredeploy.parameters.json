@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "keyVaultName": {
+      "value": "keyvaultasfran"
+    },
+    "objectId": {
+      "value": "c9266965-c83e-4f3c-82e0-235c97f3fb36"
+    }
+  }
+}

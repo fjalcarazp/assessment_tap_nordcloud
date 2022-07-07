@@ -1,0 +1,19 @@
+parameters:
+  vnetAddressSpace: ''
+  vnetName: ''
+
+jobs:
+- job: DeployVnet
+  displayName: "Deploy Vnet"
+  steps:
+  - task: AzureResourceGroupDeployment@2
+    displayName: "Deploy Vnet"
+    inputs:
+      azureSubscription: sub-deploy
+      resourceGroupName: rg-networking
+      location: westeurope
+      csmFile: $(Build.SourcesDirectory)/Scenario_NestedTemplate/nested/templates/vnet.json
+      csmParametersFile: $(Build.SourcesDirectory)/Scenario_NestedTemplate/nested/templates/vnet.parameters.json
+      overrideParameters:  '-vnetName ${{ parameters.vnetName }}
+                            -location "westeurope"
+                            -vnetAddressPrefixes ${{ parameters.vnetAddressSpace }}'

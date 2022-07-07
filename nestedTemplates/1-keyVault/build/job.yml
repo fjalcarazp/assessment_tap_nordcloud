@@ -1,0 +1,18 @@
+parameters:
+  keyVaultName: 'keyvaultasfran'
+  objectId: 'c9266965-c83e-4f3c-82e0-235c97f3fb36'
+
+jobs:
+- job: DeployVnet
+  displayName: "Deploy Vnet"
+  steps:
+  - task: AzureResourceGroupDeployment@2
+    displayName: "Deploy Vnet"
+    inputs:
+      azureSubscription: AZG-Launchpad-advanced-03
+      resourceGroupName: rg-team-1-may-case-we
+      location: westeurope
+      csmFile: $(Build.SourcesDirectory)/nestedTemplates/1-keyVault/templates/keyvault-azuredeploy.json
+      csmParametersFile: $(Build.SourcesDirectory)/nestedTemplates/1-keyVault/templates/keyvault-azuredeploy.parameters.json
+      overrideParameters:  '-keyVaultName ${{ parameters.keyVaultName }}
+                            -objectId ${{ parameters.objectId }}'
