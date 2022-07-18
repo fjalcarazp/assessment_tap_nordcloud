@@ -7,11 +7,11 @@ parameters:
   nsgFunctionUpload: 'nsg-functionapp-upload'
 
 jobs:
-- job: DeployKeyvault
-  displayName: "Deploy Key Vault"
+- job: DeployNsg
+  displayName: "Deploy Network Security Groups"
   steps:
   - task: AzureResourceGroupDeployment@2
-    displayName: "Deploy Key Vault"
+    displayName: "Deploy Network Security Groups"
     inputs:
       azureSubscription: 'SC-GARAGE'
       action: 'Create Or Update Resource Group'
