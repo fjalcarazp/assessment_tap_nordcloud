@@ -19,5 +19,8 @@ stages:
   #     vnetName: 'Vnet02'
   #     vnetAddressSpace: '10.1.0.0/24'
 
-  - template: ./keyVault/build/job.yml
+  # - template: ./keyVault/build/job.yml
+  #   parameters:
+  #     keyVaultName: 'keyvaultasfran02'
+  
   - template: ./nsg/build/job.yml
