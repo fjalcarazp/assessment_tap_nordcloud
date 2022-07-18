@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "vnetName":{
-        "value": "vnet-case1-we"
+        "value": "vnet-assessment"
       },
       "vnetAddressPrefix":{
         "value": "10.0.0.0/16"
