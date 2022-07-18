@@ -1,0 +1,224 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+      "_generator": {
+        "name": "bicep",
+        "version": "0.6.18.56646",
+        "templateHash": "10806234693722113459"
+      }
+    },
+    "parameters": {
+      "vnetName": {
+        "type": "string",
+        "defaultValue": "VNet1",
+        "metadata": {
+          "description": "VNet name"
+        }
+      },
+      "vnetAddressPrefix": {
+        "type": "string",
+        "metadata": {
+          "description": "Address prefix"
+        }
+      },
+      "subnetAppPrefix": {
+        "type": "string",
+        "metadata": {
+          "description": "Subnet App Prefix"
+        }
+      },
+      "subnetAppName": {
+        "type": "string",
+        "defaultValue": "Subnet1",
+        "metadata": {
+          "description": "Subnet App Name"
+        }
+      },
+      "subnetWafPrefix": {
+        "type": "string",
+        "metadata": {
+          "description": "Subnet Waf Prefix"
+        }
+      },
+      "subnetWafName": {
+        "type": "string",
+        "defaultValue": "nsgSubnetWaf",
+        "metadata": {
+          "description": "Subnet Waf Name"
+        }
+      },
+       "subnetLogicAppPrefix": {
+        "type": "string",
+        "metadata": {
+          "description": "Subnet Logic App Prefix"
+        }
+      },
+      "subnetLogicAppName": {
+        "type": "string",
+        "defaultValue": "Subnet2",
+        "metadata": {
+          "description": "Subnet Logic App Name"
+        }
+      },
+       "subnetDatabasePrefix": {
+        "type": "string",
+        "metadata": {
+          "description": "Subnet Database Prefix"
+        }
+      },
+      "subnetDatabaseName": {
+        "type": "string",
+        "defaultValue": "Subnet2",
+        "metadata": {
+          "description": "Subnet Database Name"
+        }
+      },
+      "subnetFunctionUploadPrefix": {
+        "type": "string",
+        "metadata": {
+          "description": "Subnet function app upload Prefix"
+        }
+      },
+      "subnetFunctionUploadName": {
+        "type": "string",
+        "defaultValue": "subnetFunctionUploadName",
+        "metadata": {
+          "description": "subnet function upload Name"
+        }
+      },
+      "subnetFunctionDeletePrefix": {
+        "type": "string",
+        "metadata": {
+          "description": "subnet function upload Name"
+        }
+      },
+      "subnetFunctionDeleteName": {
+        "type": "string",
+        "defaultValue": "subnetFunctionDeleteName",
+        "metadata": {
+          "description": "subnet function upload Name"
+        }
+      },
+      "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]",
+        "metadata": {
+          "description": "Location for all resources."
+        }
+      },
+      "nsgappName": {
+        "type": "string",
+        "defaultValue": "nsg-subnet-app",
+        "metadata": {
+        "description": "nsg name"
+        }
+      },
+      "nsgWAFName": {
+        "type": "string",
+        "defaultValue": "nsgSubnetWaf",
+        "metadata": {
+          "description": "nsg name"
+        }
+      },
+      "nsgNameLogicApp": {
+        "type": "string",
+        "defaultValue": "nsgSubnetLogicapp",
+        "metadata": {
+          "description": "nsg name"
+        }
+      },
+      "nsgdbName": {
+        "type": "string",
+        "defaultValue": "nsgSubnetDatabase",
+        "metadata": {
+          "description": "nsg name"
+        }
+      },
+      "nsgFunctionDelete": {
+        "type": "string",
+        "defaultValue": "nsgFunctionappDelete",
+        "metadata": {
+          "description": "nsg name"
+        }
+      },
+      "nsgFunctionUpload": {
+        "type": "string",
+        "defaultValue": "nsgFunctionappUpload",
+        "metadata": {
+          "description": "nsg name"
+        }
+      }
+    },
+    "resources": [
+      {
+        "type": "Microsoft.Network/virtualNetworks",
+        "apiVersion": "2020-05-01",
+        "name": "[parameters('vnetName')]",
+        "location": "[parameters('location')]",
+        "properties": {
+          "addressSpace": {
+            "addressPrefixes": [
+              "[parameters('vnetAddressPrefix')]"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "[parameters('subnetAppName')]",
+              "properties": {
+                "addressPrefix": "[parameters('subnetAppPrefix')]",
+                  "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgappName'))]"
+                  }
+                }
+            },
+            {
+              "name": "[parameters('subnetWafName')]",
+              "properties": {
+              "addressPrefix": "[parameters('subnetWafPrefix')]",
+              "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgWAFName'))]"
+                  }
+              }
+            },
+            {
+              "name": "[parameters('subnetLogicAppName')]",
+              "properties": {
+                "addressPrefix": "[parameters('subnetLogicAppPrefix')]",
+                 "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgNameLogicApp'))]"
+                  }
+              }
+            },
+            {
+              "name": "[parameters('subnetDatabaseName')]",
+              "properties": {
+                "addressPrefix": "[parameters('subnetDatabasePrefix')]",
+                 "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgdbName'))]"
+                  }
+              }
+            },
+          {
+              "name": "[parameters('subnetFunctionDeleteName')]",
+              "properties": {
+                "addressPrefix": "[parameters('subnetFunctionDeletePrefix')]",
+                 "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgFunctionDelete'))]"
+                  }
+              }
+            },
+          {
+              "name": "[parameters('subnetFunctionUploadName')]",
+              "properties": {
+                "addressPrefix": "[parameters('subnetFunctionUploadPrefix')]",
+                 "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgFunctionUpload'))]"
+                  }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }

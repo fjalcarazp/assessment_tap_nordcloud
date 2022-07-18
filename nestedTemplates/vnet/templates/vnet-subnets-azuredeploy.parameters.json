@@ -1,0 +1,55 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "vnetName":{
+        "value": "vnet-case1-we"
+      },
+      "vnetAddressPrefix":{
+        "value": "10.0.0.0/16"
+      },
+    
+      "subnetAppPrefix": {
+        "value": "10.0.0.0/24"
+       },
+      
+      "subnetAppName": {
+        "value": "subnet-app"
+      },
+      "subnetWafPrefix": {
+        "value": "10.0.32.0/24"
+      },
+      
+      "subnetWafName": {
+        "value": "subnet-waf"
+      },
+      "subnetLogicAppPrefix": {
+        "value": "10.0.64.0/24"
+       },
+      
+      "subnetLogicAppName": {
+        "value": "subnet-logicapp"
+      },
+      "subnetDatabasePrefix": {
+        "value": "10.0.96.0/24"
+       },
+      
+      "subnetDatabaseName": {
+        "value": "subnet-database"
+      },
+      "subnetFunctionUploadPrefix": {
+        "value": "10.0.128.0/24"
+       },
+      
+      "subnetFunctionUploadName": {
+        "value": "subnet-function-upload"
+      },
+      "subnetFunctionDeletePrefix": {
+        "value": "10.0.160.0/24"
+       },
+      
+      "subnetFunctionDeleteName": {
+        "value": "subnet-function-upload"
+      }
+   }
+} 

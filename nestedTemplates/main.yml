@@ -21,12 +21,16 @@ stages:
 
   - template: ./keyVault/build/job.yml
     parameters:
-      keyVaultName: 'keyvaultasfran03'
+      keyVaultName: 'keyvaultasfran04'
 
 - stage: stage2
   jobs:
   - template: ./nsg/build/job.yml
 
 - stage: stage3
+  jobs:
+  - template: ./vnet/build/job.yml
+
+- stage: stage4
   jobs:
   - template: ./waf/build/job.yml
