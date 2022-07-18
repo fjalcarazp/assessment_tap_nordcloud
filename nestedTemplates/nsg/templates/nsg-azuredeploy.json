@@ -1,0 +1,201 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for all resources."
+      }
+    },
+    "nsgWAFName": {
+        "type": "string",
+        "defaultValue": "nsgWAFName",
+        "metadata": {
+          "description": "nsg name"
+        }
+    },
+    "nsgFrontApp": {
+    "type": "string",
+    "defaultValue": "nsgFrontApp",
+    "metadata": {
+      "description": "nsg name"
+      }
+    },
+    "nsgDbName": {
+      "type": "string",
+      "defaultValue": "nsgDbName",
+      "metadata": {
+        "description": "nsg name"
+      }
+    },
+    "nsgNameLogicApp": {
+      "type": "string",
+      "defaultValue": "nsg-subnet-logicapp",
+      "metadata": {
+        "description": "nsg name"
+      }
+    },
+    "nsgFunctionDelete": {
+      "type": "string",
+      "defaultValue": "nsg-functionapp-delete",
+      "metadata": {
+        "description": "nsg name"
+      }
+    },
+    "nsgFunctionUpload": {
+      "type": "string",
+      "defaultValue": "nsg-functionapp-upload",
+      "metadata": {
+        "description": "nsg name"
+      }
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2020-05-01",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('nsgWAFName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "Port65500",
+            "properties":{
+              "description": "",
+              "protocol": "*",
+              "sourcePortRange": "65500",
+              "destinationPortRange": "65500",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2020-05-01",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('nsgFrontApp')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "Port65500",
+            "properties":{
+              "description": "",
+              "protocol": "*",
+              "sourcePortRange": "65500",
+              "destinationPortRange": "65500",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2020-05-01",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('nsgDbName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "Port65500",
+            "properties":{
+              "description": "",
+              "protocol": "*",
+              "sourcePortRange": "65500",
+              "destinationPortRange": "65500",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2020-05-01",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('nsgNameLogicApp')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "Port65500",
+            "properties":{
+              "description": "",
+              "protocol": "*",
+              "sourcePortRange": "65500",
+              "destinationPortRange": "65500",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2020-05-01",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('nsgFunctionDelete')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "Port65500",
+            "properties":{
+              "description": "",
+              "protocol": "*",
+              "sourcePortRange": "65500",
+              "destinationPortRange": "65500",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2020-05-01",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('nsgFunctionUpload')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "Port65500",
+            "properties":{
+              "description": "",
+              "protocol": "*",
+              "sourcePortRange": "65500",
+              "destinationPortRange": "65500",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

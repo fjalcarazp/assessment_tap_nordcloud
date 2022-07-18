@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "nsgWAFName": {
+      "value": "nsg-subnet-waf"
+    },
+    "nsgFrontApp": {
+      "value": "nsg-subnet-front"
+    },
+    "nsgdbName": {
+      "value": "nsg-subnet-database"
+    },
+    "nsgNameLogicApp": {
+      "value": "nsg-subnet-logicapp"
+    },
+    "nsgFunctionDelete": {
+      "value": "nsg-functionapp-delete"
+    },
+    "nsgFunctionUpload": {
+      "value": "nsg-functionapp-upload"
+    }
+  }
+}

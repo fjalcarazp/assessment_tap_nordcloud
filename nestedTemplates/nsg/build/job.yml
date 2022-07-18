@@ -1,0 +1,30 @@
+parameters:
+  nsgWAFName: 'nsg-subnet-waf'
+  nsgFrontApp: 'nsg-subnet-front'
+  nsgDbName: 'nsg-subnet-database'
+  nsgNameLogicApp: 'nsg-subnet-logicapp'
+  nsgFunctionDelete: 'nsg-functionapp-delete'
+  nsgFunctionUpload: 'nsg-functionapp-upload'
+
+jobs:
+- job: DeployKeyvault
+  displayName: "Deploy Key Vault"
+  steps:
+  - task: AzureResourceGroupDeployment@2
+    displayName: "Deploy Key Vault"
+    inputs:
+      azureSubscription: 'SC-GARAGE'
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: 'rg-team-1-may-case-we'
+      location: 'westeurope'
+      templateLocation: 'Linked artifact'
+      csmFile: '$(Build.SourcesDirectory)/nestedTemplates/nsg/templates/nsg-azuredeploy.json'
+      csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/nsg/templates/nsg-azuredeploy.parameters.json'
+      overrideParameters: |
+        -nsgWAFName ${{ parameters.nsgWAFName }} 
+        -nsgFrontApp ${{ parameters.nsgFrontApp }}
+        -nsgDbName ${{ parameters.nsgDbName }}
+        -nsgNameLogicApp ${{ parameters.nsgNameLogicApp }}
+        -nsgFunctionDelete ${{ parameters.nsgFunctionDelete }}
+        -nsgFunctionUpload ${{ parameters.nsgFunctionUpload }}
+      deploymentMode: 'Incremental'
