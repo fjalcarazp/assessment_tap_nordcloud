@@ -3,22 +3,22 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "nsgWAFName": {
-      "value": "nsg-subnet-waf"
+      "value": "nsgSubnetWaf"
     },
     "nsgFrontApp": {
-      "value": "nsg-subnet-front"
+      "value": "nsgSubnetFront"
     },
-    "nsgdbName": {
-      "value": "nsg-subnet-database"
+    "nsgDbName": {
+      "value": "nsgSubnetDatabase"
     },
     "nsgNameLogicApp": {
-      "value": "nsg-subnet-logicapp"
+      "value": "nsgSubnetLogicapp"
     },
     "nsgFunctionDelete": {
-      "value": "nsg-functionapp-delete"
+      "value": "nsgFunctionappDelete"
     },
     "nsgFunctionUpload": {
-      "value": "nsg-functionapp-upload"
+      "value": "nsgFunctionappUpload"
     }
   }
 }

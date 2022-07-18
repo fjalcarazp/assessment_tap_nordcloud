@@ -1,10 +1,10 @@
 parameters:
-  nsgWAFName: 'nsg-subnet-waf'
-  nsgFrontApp: 'nsg-subnet-front'
-  nsgDbName: 'nsg-subnet-database'
-  nsgNameLogicApp: 'nsg-subnet-logicapp'
-  nsgFunctionDelete: 'nsg-functionapp-delete'
-  nsgFunctionUpload: 'nsg-functionapp-upload'
+  nsgWAFName: 'nsgSubnetWaf'
+  nsgFrontApp: 'nsgSubnetFront'
+  nsgDbName: 'nsgSubnetDatabase'
+  nsgNameLogicApp: 'nsgSubnetLogicapp'
+  nsgFunctionDelete: 'nsgFunctionappDelete'
+  nsgFunctionUpload: 'nsgFunctionappUpload'
 
 jobs:
 - job: DeployNsg
