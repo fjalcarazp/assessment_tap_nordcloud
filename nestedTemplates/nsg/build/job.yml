@@ -1,10 +1,10 @@
-parameters:
-  nsgWAFName: 'nsgSubnetWaf'
-  nsgFrontApp: 'nsgSubnetFront'
-  nsgDbName: 'nsgSubnetDatabase'
-  nsgNameLogicApp: 'nsgSubnetLogicapp'
-  nsgFunctionDelete: 'nsgFunctionappDelete'
-  nsgFunctionUpload: 'nsgFunctionappUpload'
+# parameters:
+#   nsgWAFName: 'nsgSubnetWaf'
+#   nsgFrontApp: 'nsgSubnetFront'
+#   nsgDbName: 'nsgSubnetDatabase'
+#   nsgNameLogicApp: 'nsgSubnetLogicapp'
+#   nsgFunctionDelete: 'nsgFunctionappDelete'
+#   nsgFunctionUpload: 'nsgFunctionappUpload'
 
 jobs:
 - job: DeployNsg
@@ -20,11 +20,11 @@ jobs:
       templateLocation: 'Linked artifact'
       csmFile: '$(Build.SourcesDirectory)/nestedTemplates/nsg/templates/nsg-azuredeploy.json'
       csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/nsg/templates/nsg-azuredeploy.parameters.json'
-      overrideParameters: |
-        -nsgWAFName ${{ parameters.nsgWAFName }} 
-        -nsgFrontApp ${{ parameters.nsgFrontApp }}
-        -nsgDbName ${{ parameters.nsgDbName }}
-        -nsgNameLogicApp ${{ parameters.nsgNameLogicApp }}
-        -nsgFunctionDelete ${{ parameters.nsgFunctionDelete }}
-        -nsgFunctionUpload ${{ parameters.nsgFunctionUpload }}
+      # overrideParameters: |
+      #   -nsgWAFName ${{ parameters.nsgWAFName }} 
+      #   -nsgFrontApp ${{ parameters.nsgFrontApp }}
+      #   -nsgDbName ${{ parameters.nsgDbName }}
+      #   -nsgNameLogicApp ${{ parameters.nsgNameLogicApp }}
+      #   -nsgFunctionDelete ${{ parameters.nsgFunctionDelete }}
+      #   -nsgFunctionUpload ${{ parameters.nsgFunctionUpload }}
       deploymentMode: 'Incremental'
