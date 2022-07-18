@@ -1,0 +1,22 @@
+parameters:
+  applicationGatewayName: 'appgatewayWAF'
+  URLService: 'webappfront-assessment.azurewebsites.net'
+
+jobs:
+- job: DeployKeyvault
+  displayName: "Deploy Key Vault"
+  steps:
+  - task: AzureResourceGroupDeployment@2
+    displayName: "Deploy Key Vault"
+    inputs:
+      azureSubscription: 'SC-GARAGE'
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: 'rg-team-1-may-case-we'
+      location: 'westeurope'
+      templateLocation: 'Linked artifact'
+      csmFile: '$(Build.SourcesDirectory)/nestedTemplates/waf/templates/waf-azuredeploy.json'
+      csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/waf/templates/waf-azuredeploy.parameters.json'
+      overrideParameters: |
+        -applicationGatewayName ${{ parameters.applicationGatewayName }} 
+        -URLService ${{ parameters.URLService }}
+      deploymentMode: 'Incremental'
