@@ -11,42 +11,42 @@
     },
     "nsgWAFName": {
         "type": "string",
-        "defaultValue": "nsgWAFName",
+        "defaultValue": "nsgSubnetWaf",
         "metadata": {
           "description": "nsg name"
         }
     },
     "nsgFrontApp": {
-    "type": "string",
-    "defaultValue": "nsgFrontApp",
-    "metadata": {
-      "description": "nsg name"
-      }
+        "type": "string",
+        "defaultValue": "nsgSubnetFront",
+        "metadata": {
+          "description": "nsg name"
+        }
     },
     "nsgDbName": {
       "type": "string",
-      "defaultValue": "nsgDbName",
+      "defaultValue": "nsgSubnetDatabase",
       "metadata": {
         "description": "nsg name"
       }
     },
     "nsgNameLogicApp": {
       "type": "string",
-      "defaultValue": "nsg-subnet-logicapp",
+      "defaultValue": "nsgSubnetLogicapp",
       "metadata": {
         "description": "nsg name"
       }
     },
     "nsgFunctionDelete": {
       "type": "string",
-      "defaultValue": "nsg-functionapp-delete",
+      "defaultValue": "nsgFunctionappDelete",
       "metadata": {
         "description": "nsg name"
       }
     },
     "nsgFunctionUpload": {
       "type": "string",
-      "defaultValue": "nsg-functionapp-upload",
+      "defaultValue": "nsgFunctionappUpload",
       "metadata": {
         "description": "nsg name"
       }
