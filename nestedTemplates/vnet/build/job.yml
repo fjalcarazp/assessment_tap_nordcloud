@@ -3,18 +3,18 @@
 #   objectId: 'c9266965-c83e-4f3c-82e0-235c97f3fb36'
 
 jobs:
-- job: DeployVnetsAndSubnets
+- job: DeployVnetAndSubnets
   displayName: "Deploy Vnet and subnets"
   steps:
   - task: AzureResourceGroupDeployment@2
-    displayName: "Deploy Key Vault"
+    displayName: "Deploy Vnet and Subnets"
     inputs:
       azureSubscription: 'SC-GARAGE'
       action: 'Create Or Update Resource Group'
       resourceGroupName: 'rg-team-1-may-case-we'
       location: 'westeurope'
       templateLocation: 'Linked artifact'
-      csmFile: '$(Build.SourcesDirectory)/nestedTemplates/vnet/templates/vnet-subnets-azuredeploy'
+      csmFile: '$(Build.SourcesDirectory)/nestedTemplates/vnet/templates/vnet-subnets-azuredeploy.json'
       csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/vnet/templates/vnet-subnets-azuredeploy.parameters.json'
       # overrideParameters: |
       #   -keyVaultName ${{ parameters.keyVaultName }} 
