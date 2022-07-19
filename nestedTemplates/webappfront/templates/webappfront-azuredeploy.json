@@ -276,50 +276,50 @@
                 "collation": "[parameters('collation')]"
             }
         },
-        {
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "[variables('vnetDeploymentApiVersion')]",
-            "name": "[parameters('vnetName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [],
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "[variables('vnetAddress')]"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "[parameters('subnetForApp')]",
-                        "properties": {
-                            "addressPrefix": "[variables('subnetAddressForApp')]",
-                            "delegations": [
-                                {
-                                    "name": "dlg-appService",
-                                    "properties": {
-                                        "serviceName": "Microsoft.Web/serverFarms"
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "name": "[parameters('subnetForDb')]",
-                        "properties": {
-                            "addressPrefix": "[variables('subnetAddressForDb')]",
-                            "delegations": [
-                                {
-                                    "name": "dlg-database",
-                                    "properties": {
-                                        "serviceName": "Microsoft.DBforMySQL/flexibleServers"
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                ]
-            }
-        },
+        // {
+        //     "type": "Microsoft.Network/virtualNetworks",
+        //     "apiVersion": "[variables('vnetDeploymentApiVersion')]",
+        //     "name": "[parameters('vnetName')]",
+        //     "location": "[parameters('location')]",
+        //     "dependsOn": [],
+        //     "properties": {
+        //         "addressSpace": {
+        //             "addressPrefixes": [
+        //                 "[variables('vnetAddress')]"
+        //             ]
+        //         },
+        //         "subnets": [
+        //             {
+        //                 "name": "[parameters('subnetForApp')]",
+        //                 "properties": {
+        //                     "addressPrefix": "[variables('subnetAddressForApp')]",
+        //                     "delegations": [
+        //                         {
+        //                             "name": "dlg-appService",
+        //                             "properties": {
+        //                                 "serviceName": "Microsoft.Web/serverFarms"
+        //                             }
+        //                         }
+        //                     ]
+        //                 }
+        //             },
+        //             {
+        //                 "name": "[parameters('subnetForDb')]",
+        //                 "properties": {
+        //                     "addressPrefix": "[variables('subnetAddressForDb')]",
+        //                     "delegations": [
+        //                         {
+        //                             "name": "dlg-database",
+        //                             "properties": {
+        //                                 "serviceName": "Microsoft.DBforMySQL/flexibleServers"
+        //                             }
+        //                         }
+        //                     ]
+        //                 }
+        //             }
+        //         ]
+        //     }
+        // },
         {
             "type": "Microsoft.Network/privateDnsZones",
             "apiVersion": "[variables('privateDnsApiVersion')]",

@@ -6,13 +6,13 @@
             "value": "1688f6c5-a6d2-4875-8668-9b418ed631a1"
         },
         "name": {
-            "value": "wp-001"
+            "value": "webappfront"
         },
         "location": {
             "value": "West Europe"
         },
         "hostingPlanName": {
-            "value": "ASP-rgteam1maycasewe-b15a"
+            "value": "planwebappfront"
         },
         "serverFarmResourceGroup": {
             "value": "rg-team-1-may-case-we"
@@ -78,22 +78,22 @@
             "value": 2
         },
         "serverName": {
-            "value": "wp001-6a20ed29e80d4437a052c08284d4e96d-dbserver"
+            "value": "webappfront-dbserver"
         },
         "serverUsername": {
-            "value": "blqpaxezaq"
+            "value": "azureuser"
         },
         "serverPassword": {
-            "value": null
+            "value": "Pa$$w0rdPa$$w0rd"
         },
         "databaseName": {
-            "value": "wp001_6a20ed29e80d4437a052c08284d4e96d_database"
+            "value": "webappfront_database"
         },
         "publicNetworkAccess": {
             "value": "Disabled"
         },
         "wordpressTitle": {
-            "value": "WordPress On Azure"
+            "value": "Nordcloud Assessment"
         },
         "wordpressAdminEmail": {
             "value": "francisco.alcaraz@nordcloud.com"
@@ -102,22 +102,22 @@
             "value": "azureuser"
         },
         "wordpressPassword": {
-            "value": null
+            "value": "Pa$$w0rdPa$$w0rd"
         },
         "wpLocaleCode": {
             "value": "en_US"
         },
         "vnetName": {
-            "value": "wp001-86acf5f5ab-vnet"
+            "value": "vnet-assessment"
         },
         "subnetForApp": {
-            "value": "wp001-86acf5f5ab-appsubnet"
+            "value": "subnet-app"
         },
         "subnetForDb": {
-            "value": "wp001-86acf5f5ab-dbsubnet"
+            "value": "subnet-database"
         },
         "privateDnsZoneNameForDb": {
-            "value": "wp001-86acf5f5ab-privatelink.mysql.database.azure.com"
+            "value": "webappfrontassessment-privatelink.mysql.database.azure.com"
         }
     }
 }
