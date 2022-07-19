@@ -6,13 +6,13 @@
             "value": "1688f6c5-a6d2-4875-8668-9b418ed631a1"
         },
         "name": {
-            "value": "webappfront"
+            "value": "webappfrontassessmentfran"
         },
         "location": {
             "value": "West Europe"
         },
         "hostingPlanName": {
-            "value": "planwebappfront"
+            "value": "planwebappfrontassessmentfran"
         },
         "resourceGroup": {
             "value": "rg-team-1-may-case-we"

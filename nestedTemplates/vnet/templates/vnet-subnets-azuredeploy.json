@@ -169,7 +169,15 @@
                 "addressPrefix": "[parameters('subnetAppPrefix')]",
                   "networkSecurityGroup": {
                     "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgappName'))]"
-                  }
+                  },
+                "delegations": [
+                    {
+                      "name": "dlg-appService",
+                      "properties": {
+                        "serviceName": "Microsoft.Web/serverFarms"
+                      }
+                    }
+                  ]
                 }
             },
             {

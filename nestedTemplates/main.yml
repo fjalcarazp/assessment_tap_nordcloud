@@ -26,7 +26,7 @@ stages:
 
   - template: ./keyVault/build/job.yml
     parameters:
-      keyVaultName: 'keyvaultasfran08'
+      keyVaultName: 'keyvaultasfran09'
 
 - stage: stage2
   jobs:
