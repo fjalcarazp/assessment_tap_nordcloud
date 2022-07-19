@@ -1,5 +1,5 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "subscriptionId": {
@@ -276,50 +276,6 @@
                 "collation": "[parameters('collation')]"
             }
         },
-        // {
-        //     "type": "Microsoft.Network/virtualNetworks",
-        //     "apiVersion": "[variables('vnetDeploymentApiVersion')]",
-        //     "name": "[parameters('vnetName')]",
-        //     "location": "[parameters('location')]",
-        //     "dependsOn": [],
-        //     "properties": {
-        //         "addressSpace": {
-        //             "addressPrefixes": [
-        //                 "[variables('vnetAddress')]"
-        //             ]
-        //         },
-        //         "subnets": [
-        //             {
-        //                 "name": "[parameters('subnetForApp')]",
-        //                 "properties": {
-        //                     "addressPrefix": "[variables('subnetAddressForApp')]",
-        //                     "delegations": [
-        //                         {
-        //                             "name": "dlg-appService",
-        //                             "properties": {
-        //                                 "serviceName": "Microsoft.Web/serverFarms"
-        //                             }
-        //                         }
-        //                     ]
-        //                 }
-        //             },
-        //             {
-        //                 "name": "[parameters('subnetForDb')]",
-        //                 "properties": {
-        //                     "addressPrefix": "[variables('subnetAddressForDb')]",
-        //                     "delegations": [
-        //                         {
-        //                             "name": "dlg-database",
-        //                             "properties": {
-        //                                 "serviceName": "Microsoft.DBforMySQL/flexibleServers"
-        //                             }
-        //                         }
-        //                     ]
-        //                 }
-        //             }
-        //         ]
-        //     }
-        // },
         {
             "type": "Microsoft.Network/privateDnsZones",
             "apiVersion": "[variables('privateDnsApiVersion')]",
