@@ -14,7 +14,7 @@
         "hostingPlanName": {
             "type": "String"
         },
-        "serverFarmResourceGroup": {
+        "resourceGroup": {
             "type": "String"
         },
         "sku": {
@@ -203,7 +203,7 @@
                     "linuxFxVersion": "[parameters('linuxFxVersion')]",
                     "vnetRouteAllEnabled": true
                 },
-                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('resourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
                 "clientAffinityEnabled": false
             }
         },
@@ -260,7 +260,7 @@
                 },
                 "Network": {
                     "PrivateDnsZoneResourceId": "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateDnsZoneNameForDb'))]",
-                    "DelegatedSubnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnetForDb'))]"
+                    "DelegatedSubnetResourceId": "[resourceId(parameters('resourceGroup'),'Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnetForDb'))]"
                 }
             }
         },
@@ -338,7 +338,7 @@
                     ],
                     "properties": {
                         "virtualNetwork": {
-                            "id": "[resourceId('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]"
+                            "id": "[resourceId(parameters('resourceGroup'),'Microsoft.Network/virtualNetworks/', parameters('vnetName'))]"
                         },
                         "registrationEnabled": true
                     }
@@ -354,7 +354,7 @@
                 "[resourceId('Microsoft.Network/privateDnsZones/virtualNetworkLinks', parameters('privateDnsZoneNameForDb'), format('{0}-vnetlink', parameters('privateDnsZoneNameForDb')))]"
             ],
             "properties": {
-                "subnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnetForApp'))]"
+                "subnetResourceId": "[resourceId(parameters('resourceGroup'), 'Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnetForApp'))]"
             }
         },
         {

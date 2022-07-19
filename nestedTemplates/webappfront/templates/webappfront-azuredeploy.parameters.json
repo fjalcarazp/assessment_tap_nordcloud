@@ -14,7 +14,7 @@
         "hostingPlanName": {
             "value": "planwebappfront"
         },
-        "serverFarmResourceGroup": {
+        "resourceGroup": {
             "value": "rg-team-1-may-case-we"
         },
         "sku": {
