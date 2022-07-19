@@ -49,7 +49,7 @@
        },
       
       "subnetFunctionDeleteName": {
-        "value": "subnet-function-upload"
+        "value": "subnet-function-delete"
       }
    }
 } 
