@@ -109,7 +109,7 @@
       },
       "nsgappName": {
         "type": "string",
-        "defaultValue": "nsg-subnet-app",
+        "defaultValue": "nsgSubnetFront",
         "metadata": {
         "description": "nsg name"
         }
