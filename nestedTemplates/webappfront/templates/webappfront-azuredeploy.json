@@ -289,8 +289,7 @@
                     "name": "[format('{0}-vnetlink', parameters('privateDnsZoneNameForDb'))]",
                     "location": "global",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateDnsZoneNameForDb'))]",
-                        // "[resourceId('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]"
+                        "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateDnsZoneNameForDb'))]"
                     ],
                     "properties": {
                         "virtualNetwork": {
