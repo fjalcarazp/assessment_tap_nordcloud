@@ -7,8 +7,8 @@ pool:
   vmImage: 'ubuntu-18.04'
 
 stages:
-# - stage: stage1
-#   jobs:
+- stage: stage1
+  jobs:
   # - template: ./nested/build/job.yml
   #   parameters:
   #     vnetName: 'Vnet01'
@@ -24,17 +24,17 @@ stages:
 
 
 
-#   - template: ./keyVault/build/job.yml
-#     parameters:
-#       keyVaultName: 'keyvaultasfran07'
+  - template: ./keyVault/build/job.yml
+    parameters:
+      keyVaultName: 'keyvaultasfran07'
 
-# - stage: stage2
-#   jobs:
-#   - template: ./nsg/build/job.yml
+- stage: stage2
+  jobs:
+  - template: ./nsg/build/job.yml
 
-# - stage: stage3
-#   jobs:
-#   - template: ./vnet/build/job.yml
+- stage: stage3
+  jobs:
+  - template: ./vnet/build/job.yml
 
 - stage: stage4
   jobs:

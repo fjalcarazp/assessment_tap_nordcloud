@@ -194,9 +194,17 @@
               "name": "[parameters('subnetDatabaseName')]",
               "properties": {
                 "addressPrefix": "[parameters('subnetDatabasePrefix')]",
-                 "networkSecurityGroup": {
-                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgdbName'))]"
-                  }
+                "networkSecurityGroup": {
+                  "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgdbName'))]"
+                },
+                "delegations": [
+                    {
+                        "name": "dlg-database",
+                        "properties": {
+                            "serviceName": "Microsoft.DBforMySQL/flexibleServers"
+                        }
+                    }
+                ]
               }
             },
           {
