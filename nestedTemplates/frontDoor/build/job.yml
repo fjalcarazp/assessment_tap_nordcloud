@@ -1,6 +1,5 @@
 parameters:
   frontDoorName: 'frontdoorAssessmentFran'
-  backendAddress: '10.0.32.5'
 
 jobs:
 - job: DeployFrontDoor
@@ -18,5 +17,4 @@ jobs:
       csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/frontDoor/templates/frontdoor-azuredeploy.parameters.json'
       overrideParameters: |
         -frontDoorName ${{ parameters.frontDoorName }} 
-        -backendAddress ${{ parameters.backendAddress }}
       deploymentMode: 'Incremental'

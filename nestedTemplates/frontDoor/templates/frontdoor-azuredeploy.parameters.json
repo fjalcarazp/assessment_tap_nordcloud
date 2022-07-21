@@ -4,18 +4,6 @@
   "parameters": {
     "frontDoorName": {
       "value": "frontdoorAssessmentFran"
-    },
-    "frontendIpWaf": {
-      "value": "",
-      "metadata": {
-        "description": "The frontendIp of the WAF"
-      }
-    },
-    "frontendIpWafName": {
-      "value": "publicIpNameWaf",
-      "metadata": {
-        "description": "The frontendIp of the WAF"
-      }
     }
   }
 }

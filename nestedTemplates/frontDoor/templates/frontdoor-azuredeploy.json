@@ -15,16 +15,9 @@
         "description": "The name of the frontdoor resource."
       }
     },
-    "fronendIpWafName": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "The hostname of the backend. Must be an IP address or FQDN."
-      }
-    },
     "frontendIpWaf": {
       "type": "string",
-      "defaultValue": "[reference(resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', parameters('fronendIpWafName'))).properties.ipAddress]",
+      "defaultValue": "[reference(resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', 'publicIpNameWaf')).properties.ipAddress]",
       "metadata": {
         "description": "The hostname of the backend. Must be an IP address or FQDN."
       }
