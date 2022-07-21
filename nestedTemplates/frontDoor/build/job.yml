@@ -14,8 +14,8 @@ jobs:
       resourceGroupName: 'rg-team-1-may-case-we'
       location: 'westeurope'
       templateLocation: 'Linked artifact'
-      csmFile: '$(Build.SourcesDirectory)/nestedTemplates/waf/templates/waf-azuredeploy.json'
-      csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/waf/templates/waf-azuredeploy.parameters.json'
+      csmFile: '$(Build.SourcesDirectory)/nestedTemplates/frontDoor/templates/frontdoor-azuredeploy.json'
+      csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/frontDoor/templates/frontdoor-azuredeploy.parameters.json'
       overrideParameters: |
         -frontDoorName ${{ parameters.frontDoorName }} 
         -backendAddress ${{ parameters.backendAddress }}
