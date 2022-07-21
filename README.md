@@ -3,7 +3,7 @@
     <img src="doc/logo.png" alt="Logo" width="300" height="">
   </a>
 
-  <h1 align="center">Assessment for Azure Advanced Infra TAP: <sup>Diagram of Architecture<sup></h1>
+  <h1 align="center">Assessment for Azure Advanced Infra TAP: <b>Diagram of Architecture<b></h1>
 </div>
 
 <div>
