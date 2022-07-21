@@ -21,6 +21,13 @@
       "metadata": {
         "description": "Frontend ip of the waf used as backend in frontdoor"
       }
+    },
+    "resourceGroupName": {
+      "type": "string",
+      "defaultValue": "rg-team-1-may-case-we",
+      "metadata": {
+        "description": "Resource group used"
+      }
     }
   },
   "variables": {
@@ -72,8 +79,8 @@
             "properties": {
               "backends": [
                 {
-                  "address": "[reference(resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', parameters('frontendIpNameWaf'))).properties.ipAddress]",
-                  "backendHostHeader": "[reference(resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', parameters('frontendIpNameWaf'))).properties.ipAddress]",
+                  "address": "[reference(resourceId(parameters('resourceGroupName'), 'Microsoft.Network/publicIPAddresses', parameters('frontendIpNameWaf'))).properties.ipAddress]",
+                  "backendHostHeader": "[reference(resourceId(parameters('resourceGroupName'), 'Microsoft.Network/publicIPAddresses', parameters('frontendIpNameWaf'))).properties.ipAddress]",
                   "httpPort": 80,
                   "httpsPort": 443,
                   "weight": 50,

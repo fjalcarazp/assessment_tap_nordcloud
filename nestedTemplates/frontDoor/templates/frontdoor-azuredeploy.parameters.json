@@ -7,6 +7,9 @@
     },
     "frontendIpNameWaf": {
       "value": "frontendIpNameWaf"
+    },
+    "resourceGroupName": {
+      "value": "rg-team-1-may-case-we"
     }
   }
 }
