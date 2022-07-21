@@ -24,7 +24,7 @@
     },
     "frontendIpWaf": {
       "type": "string",
-      "defaultValue": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('fronendIpWafName'))).properties.ipAddress]",
+      "defaultValue": "[reference(resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', parameters('fronendIpWafName'))).properties.ipAddress]",
       "metadata": {
         "description": "The hostname of the backend. Must be an IP address or FQDN."
       }
