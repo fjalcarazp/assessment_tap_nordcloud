@@ -91,6 +91,12 @@
         "metadata": {
           "description": "Location for all resources."
         }
+      },
+      "publicIpAddressName": {
+        "type": "string",
+        "metadata": {
+          "description": "Public IP address name"
+        }
       }
   },
   "variables": {
@@ -99,9 +105,21 @@
   "resources": [
     {
       "apiVersion": "2020-05-01",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[parameters('publicIpAddressName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic"
+      }
+    },
+    {
+      "apiVersion": "2020-05-01",
       "name": "[parameters('applicationGatewayName')]",
       "type": "Microsoft.Network/applicationGateways",
       "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses/', parameters('publicIPAddressName'))]"
+      ],
       "properties": {
         "sku": {
           "name": "[parameters('applicationGatewaySize')]",
@@ -122,8 +140,8 @@
           {
             "name": "appGatewayFrontendIP",
             "properties": {
-              "subnet": {
-                "id": "[variables('subnetWAF')]"
+              "PublicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName'))]"
               }
             }
           }

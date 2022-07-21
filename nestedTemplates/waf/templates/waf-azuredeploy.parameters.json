@@ -25,6 +25,9 @@
     },
     "cookieBasedAffinity": {
       "value": "Disabled"
+    },
+    "publicIpAddressName": {
+      "value": "publicIpNameWaf"
     }
   }
 }
