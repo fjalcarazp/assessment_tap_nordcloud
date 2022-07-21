@@ -1,7 +1,6 @@
 parameters:
   frontDoorName: 'frontdoorAssessmentFran'
   frontendIpNameWaf: 'publicIpNameWaf'
-  resourceGroupName: 'rg-team-1-may-case-we'
 jobs:
 - job: DeployFrontDoor
   displayName: "Deploy Front Door"
@@ -19,5 +18,4 @@ jobs:
       overrideParameters: |
         -frontDoorName ${{ parameters.frontDoorName }} 
         -frontendIpNameWaf ${{ parameters.frontendIpNameWaf }} 
-        -resourceGroupName ${{ parameters.resourceGroupName }} 
       deploymentMode: 'Incremental'
