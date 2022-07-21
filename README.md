@@ -7,5 +7,6 @@
 </div>
 
 <div>
+  <h2>Architecture</h2>
   <img src="doc/architecture.png" alt="Architecture">
 </div>
