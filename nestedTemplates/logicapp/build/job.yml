@@ -1,0 +1,20 @@
+parameters:
+  logicAppName: 'logicappassessmentfran'
+
+jobs:
+- job: DeployKeyvault
+  displayName: "Deploy Logic App"
+  steps:
+  - task: AzureResourceGroupDeployment@2
+    displayName: "Deploy Logic App"
+    inputs:
+      azureSubscription: 'SC-GARAGE'
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: 'rg-team-1-may-case-we'
+      location: 'westeurope'
+      templateLocation: 'Linked artifact'
+      csmFile: '$(Build.SourcesDirectory)/nestedTemplates/logicapp/templates/logicapp-azuredeploy.json'
+      csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/logicapp/templates/logicapp-azuredeploy.parameters.json'
+      overrideParameters: |
+        -logicAppName ${{ parameters.logicAppName }} 
+      deploymentMode: 'Incremental'

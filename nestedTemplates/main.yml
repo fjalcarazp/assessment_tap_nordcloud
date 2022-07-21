@@ -44,6 +44,10 @@ stages:
 #   jobs:
 #   - template: ./waf/build/job.yml
 
-- stage: stage6
+# - stage: stage6
+#   jobs:
+#   - template: ./frontDoor/build/job.yml
+
+- stage: stage7
   jobs:
-  - template: ./frontDoor/build/job.yml
+  - template: ./logicapp/build/job.yml
