@@ -1,0 +1,22 @@
+parameters:
+  frontDoorName: 'frontdoorAssessmentFran'
+  backendAddress: '10.0.32.5'
+
+jobs:
+- job: DeployWaf
+  displayName: "Deploy Application Gateway"
+  steps:
+  - task: AzureResourceGroupDeployment@2
+    displayName: "Deploy Application Gateway"
+    inputs:
+      azureSubscription: 'SC-GARAGE'
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: 'rg-team-1-may-case-we'
+      location: 'westeurope'
+      templateLocation: 'Linked artifact'
+      csmFile: '$(Build.SourcesDirectory)/nestedTemplates/waf/templates/waf-azuredeploy.json'
+      csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/waf/templates/waf-azuredeploy.parameters.json'
+      overrideParameters: |
+        -frontDoorName ${{ parameters.frontDoorName }} 
+        -backendAddress ${{ parameters.backendAddress }}
+      deploymentMode: 'Incremental'
