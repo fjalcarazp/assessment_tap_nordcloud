@@ -6,7 +6,7 @@
       "value": "frontdoorAssessmentFran"
     },
     "frontendIpNameWaf": {
-      "value": "frontendIpNameWaf"
+      "value": "publicIpNameWaf"
     },
     "resourceGroupName": {
       "value": "rg-team-1-may-case-we"
