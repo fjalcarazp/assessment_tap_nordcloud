@@ -79,8 +79,8 @@
             "properties": {
               "backends": [
                 {
-                  "address": "[reference(resourceId(parameters('resourceGroupName'), 'Microsoft.Network/publicIPAddresses', parameters('frontendIpNameWaf'))).properties.ipAddress]",
-                  "backendHostHeader": "[reference(resourceId(parameters('resourceGroupName'), 'Microsoft.Network/publicIPAddresses', parameters('frontendIpNameWaf'))).properties.ipAddress]",
+                  "address": "[reference(resourceId(parameters('resourceGroupName'), 'Microsoft.Network/publicIPAddresses', parameters('frontendIpNameWaf')),'2020-05-01').properties.ipAddress]",
+                  "backendHostHeader": "[reference(resourceId(parameters('resourceGroupName'), 'Microsoft.Network/publicIPAddresses', parameters('frontendIpNameWaf')), '2020-05-01').properties.ipAddress]",
                   "httpPort": 80,
                   "httpsPort": 443,
                   "weight": 50,
