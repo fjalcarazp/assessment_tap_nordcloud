@@ -12,6 +12,7 @@ stages:
   - template: ./acr/build/job.yml
 
 - stage: stage2
+  jobs:
   - template: ./keyVault/build/job.yml
     parameters:
       keyVaultName: 'keyvaultasfran12'
