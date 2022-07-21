@@ -1,6 +1,6 @@
 parameters:
   frontDoorName: 'frontdoorAssessmentFran'
-
+  frontendIpNameWaf: 'frontendIpNameWaf'
 jobs:
 - job: DeployFrontDoor
   displayName: "Deploy Front Door"
@@ -17,4 +17,5 @@ jobs:
       csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/frontDoor/templates/frontdoor-azuredeploy.parameters.json'
       overrideParameters: |
         -frontDoorName ${{ parameters.frontDoorName }} 
+        -frontendIpNameWaf ${{ parameters.frontendIpNameWaf }} 
       deploymentMode: 'Incremental'

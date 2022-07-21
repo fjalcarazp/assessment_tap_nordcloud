@@ -4,6 +4,9 @@
   "parameters": {
     "frontDoorName": {
       "value": "frontdoorAssessmentFran"
+    },
+    "frontendIpNameWaf": {
+      "value": "frontendIpNameWaf"
     }
   }
 }

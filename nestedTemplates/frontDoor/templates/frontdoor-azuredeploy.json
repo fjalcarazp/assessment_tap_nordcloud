@@ -15,11 +15,11 @@
         "description": "The name of the frontdoor resource."
       }
     },
-    "frontendIpWaf": {
+    "frontendIpNameWaf": {
       "type": "string",
-      "defaultValue": "[reference(resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', 'publicIpNameWaf')).properties.ipAddress]",
+      "defaultValue": "",
       "metadata": {
-        "description": "The hostname of the backend. Must be an IP address or FQDN."
+        "description": "Frontend ip of the waf used as backend in frontdoor"
       }
     }
   },
@@ -72,8 +72,8 @@
             "properties": {
               "backends": [
                 {
-                  "address": "[parameters('frontendIpWaf')]",
-                  "backendHostHeader": "[parameters('frontendIpWaf')]",
+                  "address": "[reference(resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', parameters('frontendIpNameWaf'))).properties.ipAddress]",
+                  "backendHostHeader": "[reference(resourceId(resourceGroup().name, 'Microsoft.Network/publicIPAddresses', parameters('frontendIpNameWaf'))).properties.ipAddress]",
                   "httpPort": 80,
                   "httpsPort": 443,
                   "weight": 50,
