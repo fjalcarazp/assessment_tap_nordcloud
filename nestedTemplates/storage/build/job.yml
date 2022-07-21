@@ -1,0 +1,20 @@
+parameters:
+  storageAccountName: 'storageassessmentncfran'
+
+jobs:
+- job: DeployStorageAccount
+  displayName: "Deploy Storage Account for blobs"
+  steps:
+  - task: AzureResourceGroupDeployment@2
+    displayName: "Deploy Storage Account for blobs"
+    inputs:
+      azureSubscription: 'SC-GARAGE'
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: 'rg-team-1-may-case-we'
+      location: 'westeurope'
+      templateLocation: 'Linked artifact'
+      csmFile: '$(Build.SourcesDirectory)/nestedTemplates/storage/templates/storage-azuredeploy.json'
+      csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/storage/templates/storage-azuredeploy.parameters.json'
+      overrideParameters: |
+        -storageAccountName ${{ parameters.storageAccountName }} 
+      deploymentMode: 'Incremental'

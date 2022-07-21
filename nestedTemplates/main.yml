@@ -9,45 +9,49 @@ pool:
 stages:
 - stage: stage1
   jobs:
-  - template: ./acr/build/job.yml
+  - template: ./storage/build/job.yml
 
 - stage: stage2
+  jobs:
+  - template: ./acr/build/job.yml
+
+- stage: stage3
   jobs:
   - template: ./keyVault/build/job.yml
     parameters:
       keyVaultName: 'keyvaultasfran12'
 
-- stage: stage3
+- stage: stage4
   jobs:
   - template: ./nsg/build/job.yml
 
-- stage: stage4
+- stage: stage5
   jobs:
   - template: ./vnet/build/job.yml
 
-- stage: stage5
+- stage: stage6
   jobs:
   - template: ./webappfront/build/job.yml
 
-- stage: stage6
+- stage: stage7
   jobs:
   - template: ./waf/build/job.yml
 
-- stage: stage7
+- stage: stage8
   jobs:
   - template: ./frontDoor/build/job.yml
 
-- stage: stage8
+- stage: stage9
   jobs:
   - template: ./logicapp/build/job.yml
 
-- stage: stage9
+- stage: stage10
   jobs:
   - template: ./functionApp/build/job.yml    
     parameters:
       functionAppName: 'functionUploadAssessmentFran'
 
-- stage: stage10
+- stage: stage11
   jobs:
   - template: ./functionApp/build/job.yml    
     parameters:
