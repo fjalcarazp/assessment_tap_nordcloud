@@ -1,6 +1,6 @@
 parameters:
   frontDoorName: 'frontdoorAssessmentFran'
-  frontendIpNameWaf: 'frontendIpNameWaf'
+  frontendIpNameWaf: 'publicIpNameWaf'
   resourceGroupName: 'rg-team-1-may-case-we'
 jobs:
 - job: DeployFrontDoor
