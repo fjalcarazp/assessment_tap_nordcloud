@@ -82,7 +82,7 @@
   "variables": {
     "hostingPlanName": "[parameters('functionAppName')]",
     "applicationInsightsName": "[parameters('functionAppName')]",
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), parameters('functionAppName'))]",
+    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
     "isReserved": "[if(equals(parameters('functionPlanOS'), 'Linux'), true(), false())]"
   },
   "resources": [
