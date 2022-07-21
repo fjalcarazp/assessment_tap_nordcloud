@@ -7,7 +7,7 @@ pool:
   vmImage: 'ubuntu-18.04'
 
 stages:
-# - stage: stage1
+- stage: stage1
 #   jobs:
   # - template: ./nested/build/job.yml
   #   parameters:
@@ -21,45 +21,48 @@ stages:
 
 
 
+  jobs:
+  - template: ./acr/build/job.yml
 
-
-
+# - stage: stage2
 #   - template: ./keyVault/build/job.yml
 #     parameters:
 #       keyVaultName: 'keyvaultasfran11'
 
-# - stage: stage2
+# - stage: stage3
 #   jobs:
 #   - template: ./nsg/build/job.yml
 
-# - stage: stage3
+# - stage: stage4
 #   jobs:
 #   - template: ./vnet/build/job.yml
 
-# - stage: stage4
+# - stage: stage5
 #   jobs:
 #   - template: ./webappfront/build/job.yml
 
-# - stage: stage5
+# - stage: stage6
 #   jobs:
 #   - template: ./waf/build/job.yml
 
-# - stage: stage6
+# - stage: stage7
 #   jobs:
 #   - template: ./frontDoor/build/job.yml
 
-# - stage: stage7
+# - stage: stage8
 #   jobs:
 #   - template: ./logicapp/build/job.yml
 
-- stage: stage8
-  jobs:
-  - template: ./functionApp/build/job.yml    
-    parameters:
-      functionAppName: 'functionUploadAssessmentFran'
+# - stage: stage9
+#   jobs:
+#   - template: ./functionApp/build/job.yml    
+#     parameters:
+#       functionAppName: 'functionUploadAssessmentFran'
 
-- stage: stage9
-  jobs:
-  - template: ./functionApp/build/job.yml    
-    parameters:
-      functionAppName: 'functionDeleteAssessmentFran'
+# - stage: stage10
+#   jobs:
+#   - template: ./functionApp/build/job.yml    
+#     parameters:
+#       functionAppName: 'functionDeleteAssessmentFran'
+
+

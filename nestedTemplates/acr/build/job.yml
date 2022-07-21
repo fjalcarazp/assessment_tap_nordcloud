@@ -1,0 +1,22 @@
+# parameters:
+#   keyVaultName: 'keyvaultasfran01'
+#   objectId: 'c9266965-c83e-4f3c-82e0-235c97f3fb36'
+
+jobs:
+- job: DeployKeyvault
+  displayName: "Deploy ACR"
+  steps:
+  - task: AzureResourceGroupDeployment@2
+    displayName: "Deploy ACR"
+    inputs:
+      azureSubscription: 'SC-GARAGE'
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: 'rg-team-1-may-case-we'
+      location: 'westeurope'
+      templateLocation: 'Linked artifact'
+      csmFile: '$(Build.SourcesDirectory)/nestedTemplates/acr/templates/acr-azuredeploy.json'
+      csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/acr/templates/acr-azuredeploy.parameters.json'
+      # overrideParameters: |
+      #   -keyVaultName ${{ parameters.keyVaultName }} 
+      #   -objectId ${{ parameters.objectId }}
+      deploymentMode: 'Incremental'
