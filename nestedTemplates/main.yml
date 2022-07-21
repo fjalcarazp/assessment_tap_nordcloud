@@ -48,6 +48,18 @@ stages:
 #   jobs:
 #   - template: ./frontDoor/build/job.yml
 
-- stage: stage7
+# - stage: stage7
+#   jobs:
+#   - template: ./logicapp/build/job.yml
+
+- stage: stage8
   jobs:
-  - template: ./logicapp/build/job.yml
+  - template: ./functionApp/build/job.yml    
+    parameters:
+      functionAppName: 'functionUploadAssessmentFran'
+
+- stage: stage9
+  jobs:
+  - template: ./functionApp/build/job.yml    
+    parameters:
+      functionAppName: 'functionDeleteAssessmentFran'

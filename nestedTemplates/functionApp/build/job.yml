@@ -1,0 +1,20 @@
+parameters:
+  functionAppName: 'functionAppName'
+
+jobs:
+- job: DeployKeyvault
+  displayName: "Deploy Function App"
+  steps:
+  - task: AzureResourceGroupDeployment@2
+    displayName: "Deploy Function App"
+    inputs:
+      azureSubscription: 'SC-GARAGE'
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: 'rg-team-1-may-case-we'
+      location: 'westeurope'
+      templateLocation: 'Linked artifact'
+      csmFile: '$(Build.SourcesDirectory)/nestedTemplates/functionApp/templates/functionapp-azuredeploy.json'
+      csmParametersFile: '$(Build.SourcesDirectory)/nestedTemplates/functionApp/templates/functionapp-azuredeploy.parameters.json'
+      overrideParameters: |
+        -functionAppName ${{ parameters.functionAppName }} 
+      deploymentMode: 'Incremental'
