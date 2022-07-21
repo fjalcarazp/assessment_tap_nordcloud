@@ -1,6 +1,6 @@
 parameters:
-  applicationGatewayName: 'appgatewayWAF'
-  URLService: 'webappfront-assessment.azurewebsites.net'
+  applicationGatewayName: 'appgatewayWAFFran'
+  URLService: 'webappfrontassessmentfran.azurewebsites.net'
 
 jobs:
 - job: DeployKeyvault

@@ -18,7 +18,7 @@
       },
       "applicationGatewayName": {
         "type": "string",
-        "defaultValue": "applicationGateway1",
+        "defaultValue": "applicationGatewayFran",
         "metadata": {
           "description": "Application Gateway name"
         }

@@ -6,7 +6,7 @@
       "value": "vnet-assessment"
     },
     "applicationGatewayName": {
-      "value": "appgatewayWAF"
+      "value": "appgatewayWAFFran"
     },
     "applicationGatewaySize": {
       "value": "Standard_Medium"
@@ -21,7 +21,7 @@
       "value": 80
     },
     "URLService": {
-      "value": "webappfront-assessment.azurewebsites.net"
+      "value": "webappfrontassessmentfran.azurewebsites.net"
     },
     "cookieBasedAffinity": {
       "value": "Disabled"
