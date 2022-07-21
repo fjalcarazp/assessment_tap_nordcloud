@@ -3,11 +3,11 @@ parameters:
   backendAddress: '10.0.32.5'
 
 jobs:
-- job: DeployWaf
-  displayName: "Deploy Application Gateway"
+- job: DeployFrontDoor
+  displayName: "Deploy Front Door"
   steps:
   - task: AzureResourceGroupDeployment@2
-    displayName: "Deploy Application Gateway"
+    displayName: "Deploy Front Door"
     inputs:
       azureSubscription: 'SC-GARAGE'
       action: 'Create Or Update Resource Group'
