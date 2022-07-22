@@ -1,5 +1,0 @@
-Subscription ID: 1688f6c5-a6d2-4875-8668-9b418ed631a1
-Subscription name: AZG-Launchpad-advanced-03
-Service Principal ID: c9266965-c83e-4f3c-82e0-235c97f3fb36
-SP Secret: bK47Q~WRH2YbQ2EmbKCBNoJOzjq4BsCU6d7O0
-Tenant ID: 031e4f4a-6a35-45e0-a98e-107900032d62
