@@ -55,6 +55,6 @@
 </div>
 
 <div>
-  <h2 align="center">Diagram of Architecture</h2>
+  <h1 align="center">SOLUTION</h1>
   <img src="doc/architecture.png" alt="Architecture">
 </div>
