@@ -7,7 +7,7 @@
 </div>
 
 <div>
-  <h1>Diagram of Architecture (Francisco Javier Alcaraz Pérez)</h1>
+  <h2>Diagram of Architecture (Francisco Javier Alcaraz Pérez)</h2>
   <img src="doc/architecture.png" alt="Architecture">
 </div>
 
