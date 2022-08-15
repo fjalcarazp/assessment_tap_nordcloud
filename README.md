@@ -7,6 +7,11 @@
 </div>
 
 <div>
+  <h1>Diagram of Architecture (Francisco Javier Alcaraz Pérez)</h1>
+  <img src="doc/architecture.png" alt="Architecture">
+</div>
+
+<div>
   <h2>READ ME BEFORE STARTING</h2>
   <p>You have received this assessment as part of the Launchpad assessment process at Nordcloud. In sending this to you, we are testing a few skills including the following:</p>
   <ul>
@@ -52,9 +57,4 @@
 
   <h2>Environment</h2>
   <p>You are expected to use your own sandbox environment/account in the relevant cloud provider. </p>
-</div>
-
-<div>
-  <h1>Diagram of Architecture (Francisco Javier Alcaraz Pérez)</h1>
-  <img src="doc/architecture.png" alt="Architecture">
 </div>
