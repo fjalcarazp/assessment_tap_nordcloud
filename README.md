@@ -55,6 +55,6 @@
 </div>
 
 <div>
-  <h1 align="center">SOLUTION</h1>
+  <h1>Diagram of Architecture (Francisco Javier Alcaraz Pérez)</h1>
   <img src="doc/architecture.png" alt="Architecture">
 </div>
