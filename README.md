@@ -11,6 +11,20 @@
 </div>
 
 <div>
+  <h2>READ ME BEFORE STARTING</h2>
+  <p>You have received this assessment as part of the Launchpad assessment process at Nordcloud. In sending this to you, we are testing a few skills including the following:</p>
+  <ul>
+    <li>Architecture design</li>
+    <li>Ability to present solutions</li>
+    <li>Engineering skills </li>
+    <li>Documentation</li>
+    <li>Security</li>
+  </ul>
+
+  <p>A few notes: Please try to deliver the best solution you can, given the time that you have available. Concentrate on the components that you think matter most. If there are any parts of this assessment that are not clear, please do not hesitate to reach out to your People Leaders for clarification. This assignment, by design, leaves some room for critical thinking and questioning.</p>
+  <p>Study the assignment, create your own implementation and prepare to demo/explain it. The goal is not to develop an exhaustive and perfect solution with all the bells and whistles, but to reflect your experience and approach to this assignment. However, it does need to fulfill the acceptance criteria. Please also keep the “Business Case” in mind while designing your solution.<p>
+  <p>Good luck!</p>
+
   <h2>Deliverables</h2>
   <ul>
     <li>The solution must be delivered using a private git repository on GitHub or GitLab. Make sure to add the user ‘nc-tech-review’ as a collaborator to the repository.</li>
